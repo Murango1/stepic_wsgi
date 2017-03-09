@@ -1,4 +1,8 @@
-sudo ln -sf /home/art/Mooc/stepic_web_wsgi/web/etc/nginx.conf /etc/nginx/sites-enabled/default
+#nginx conf
+sudo rm /etc/nginx/sites-enabled/default
+sudo ln -s /home/box/web/etc/nginx.conf  /etc/nginx/sites-enabled/test.conf
 sudo /etc/init.d/nginx restart
 
-sudo gunicorn -w 4 -b 0.0.0.0:8080 hello:app
+#gunicorn conf
+sudo ln -s /home/box/web/etc/gunicorn.conf   /etc/gunicorn.d/ask
+sudo /etc/init.d/gunicorn restart
