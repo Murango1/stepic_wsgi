@@ -1,8 +1,6 @@
-#nginx conf
-sudo rm /etc/nginx/sites-enabled/default
-sudo ln -s /home/box/web/etc/nginx.conf  /etc/nginx/sites-enabled/test.conf
+sudo ln -sf /home/box/web/etc/nginx.conf  /etc/nginx/sites-enabled/default
 sudo /etc/init.d/nginx restart
-
-#gunicorn conf
-sudo ln -s /home/box/web/etc/gunicorn.conf   /etc/gunicorn.d/ask
+sudo ln -sf /home/box/web/etc/hello.py   /etc/gunicorn.d/hello.py
 sudo /etc/init.d/gunicorn restart
+sudo gunicorn --bind 0.0.0.0:8080 hello &
+sudo /etc/init.d/mysql start
